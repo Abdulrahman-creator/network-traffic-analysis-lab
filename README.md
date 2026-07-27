@@ -22,12 +22,10 @@ The TCP 3-way handshake establishes a reliable connection between a client and a
 3. **ACK (Acknowledge):** Client confirms server sequence number, establishing an active state (`ESTABLISHED`).
 
 ### Key Wireshark Display Filters
-```wireshark
-# Isolate TCP SYN flags (Handshake initiation)
-tcp.flags.syn == 1 && tcp.flags.ack == 0
+* **Isolate TCP SYN flags (Handshake initiation):** `tcp.flags.syn == 1 && tcp.flags.ack == 0`
+* **Track specific TCP stream session:** `tcp.stream eq 0`
 
-# Track specific TCP stream session
-tcp.stream eq 0
+---
 
 ## 🚨 Module 2: Security Threat Analysis (Clear-Text HTTP Credential Leakage)
 
@@ -43,3 +41,10 @@ An internal workstation submitted authentication requests over clear-text HTTP (
 ![HTTP Stream Analysis](http_stream.png)
 
 By following the HTTP TCP stream in Wireshark, plaintext payload data was exposed:
+
+```http
+POST /login.php HTTP/1.1
+Host: internal-auth.local
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=SuperSecretPassword123!
