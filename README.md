@@ -28,3 +28,17 @@ tcp.flags.syn == 1 && tcp.flags.ack == 0
 
 # Track specific TCP stream session
 tcp.stream eq 0
+## 🚨 Module 2: Security Threat Analysis (Clear-Text HTTP Credential Leakage)
+
+### Threat Scenario
+An internal workstation submitted authentication requests over clear-text HTTP (Port 80), exposing sensitive credentials to local packet capture and potential adversary interception (Man-in-the-Middle).
+
+### Investigation Findings
+* **Protocol:** HTTP POST Request
+* **Vulnerability:** Lack of Transport Layer Security (TLS/HTTPS Encryption)
+* **Risk Impact:** High — Direct disclosure of user credentials across internal networks.
+
+### Packet Proof & Inspection
+![HTTP Stream Analysis](http_stream.png)
+
+By following the HTTP TCP stream in Wireshark, plaintext payload data was exposed:
