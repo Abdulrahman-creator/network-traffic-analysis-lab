@@ -28,6 +28,7 @@ tcp.flags.syn == 1 && tcp.flags.ack == 0
 
 # Track specific TCP stream session
 tcp.stream eq 0
+
 ## 🚨 Module 2: Security Threat Analysis (Clear-Text HTTP Credential Leakage)
 
 ### Threat Scenario
